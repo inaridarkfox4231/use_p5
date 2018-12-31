@@ -12,6 +12,9 @@ function draw(){
   bug.move();
   bug.display();
 }
+// デフォルトだと60fps（変えるときは逐一指定する）
+// つまり、1秒に60回このdrawが呼び出されるらしい。
+// setupは一番最初に実行される関数のようです。
 
 // Jitter class
 function Jitter(){
