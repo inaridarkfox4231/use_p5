@@ -1,0 +1,10 @@
+p5.playの使い方まとめてみたいよね
+--sprite--
+
+ラベルを取得してアニメーションの変更をクリックなどのトリガーで実行する方法
+getAnimationLabel()でString型のlabelを取得
+
+spriteに画像を用意する方法
+基本的にはpygameと同じ
+事前に変数を用意しておいてpreloadでloadImageによりアドレスから読み込む
+後はそれをaddImageで追加するだけ
