@@ -32,23 +32,26 @@ function drawgauge(){
   rect(10, 10, gauge, 10);
 }
 
-function mouseMoved(){
+function mouseMoved(){ // レファレンスに書いてあるけど、押したままだと発動しないよ。
   pos_x = mouseX;
   if(pos_x < 0){ pos_x = 0; }
   if(pos_x > 450){ pos_x = 450; }
 }
 
-function mouseClicked(){
+function mouseReleased(){
   // ゲージの色による場合分け
   if(gauge < 80){
     fire = createSprite(pos_x + 15, 282, 9, 36);
     fire.addImage(fire_red);
+    fire.name = "red"; // プロパティは勝手に追加できる（ここでは炎の名前を追加してみた）
   }else{
     fire = createSprite(pos_x + 15, 293, 15, 15);
     fire.addImage(fire_blue);
+    fire.name = "blue"; // 割と自由にできる
   }
   fire.setVelocity(0, -5); // 速度
   fire.life = 50; // 消滅するまでのフレーム数をlife属性で指定できるんだって
+  console.log(fire.name); // 付けた名前を発射時にコンソールに出力する
 }
 // 青でしか倒せない敵
 // 青は赤の3倍ダメージとか？あるいは貫通能力でもいい
