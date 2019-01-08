@@ -10,6 +10,7 @@ var square; // squareのスプライト情報（こうするらしい）
 var squareGroup;
 var fire; // fireのスプライト情報（こうする？）
 var fireGroup;
+var i, j, k, tmp;
 
 // 一旦、やめよう
 
@@ -38,7 +39,7 @@ function draw(){
   if(mouseIsPressed){ gauge += 2; if(gauge > 100){ gauge = 0; }}
   else{ gauge = 0; }
   drawgauge();
-  if(fireGroup.size() > 0){ fire.collide(squareGroup, hello); }
+  checkCollide();
   drawSprites();
 }
 
@@ -47,6 +48,15 @@ function drawgauge(){
   if(gauge < 80){ fill(255, 0, 0); }else{ fill(0, 0, 255); }
   noStroke(); // ゲージの輪郭線を消す
   rect(10, 10, gauge, 10);
+}
+
+function checkCollide(){
+  if(fireGroup.size() === 0){ return; }
+  for(i = 0; i < fireGroup.size(); i++){
+    for(j = 0; j < squareGroup.size(); j++){
+      fireGroup[i].collide(squareGroup[j], hello);
+    }
+  }
 }
 
 function mouseMoved(){ // レファレンスに書いてあるけど、押したままだと発動しないよ。
@@ -75,6 +85,7 @@ function mouseReleased(){
 // キーを押すと正方形が大量発生
 function keyTyped(){
   if(key === 'c'){
+    // デバッグコード
     console.log(squareGroup.size());
     console.log(fireGroup.size());
     return;
