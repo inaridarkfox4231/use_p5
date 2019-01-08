@@ -8,3 +8,7 @@ spriteに画像を用意する方法
 基本的にはpygameと同じ
 事前に変数を用意しておいてpreloadでloadImageによりアドレスから読み込む
 後はそれをaddImageで追加するだけ
+
+Group使う時は、変数を用意しておき、setupの中で
+fireGroup = new Group();
+のようにして呼び出す。
